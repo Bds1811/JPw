@@ -1,0 +1,44 @@
+<app-navbarjobseeker></app-navbarjobseeker>
+<nav class="navbar">
+  <input class="form-control" type="text" name="JobTitle" [(ngModel)]="JobTitle" (ngModelChange)="Search()"
+        placeholder="Enter JobTitle to search">
+</nav>
+<div class="text-center">
+  <div class="card" >
+    <br>
+    <br>
+    <div class="card-header text-center fs-3">
+      Job List
+    </div>
+    <div class="card-body" >
+      <table class=" table table-success table-striped table-hover" >
+        <thead>
+          <tr>
+            <th scope="col">JobId</th>
+            <th scope="col">JobTitle</th>
+            <th scope="col">JobDescription</th>
+            <th scope="col">JobExperienceLevel</th>
+            <th scope="col">JobSkillSet</th>
+            <th scope="col">JobPayScale</th>
+            <th scope="col">JobLocation</th>
+            <th scope="col">StartDate</th>
+            <th scope="col">EndDate</th>
+            <th scope="col">CompanyId</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let jb of joblist">
+          <td>{{jb.jobId}}</td>
+          <td>{{jb.jobTitle}}</td>
+          <td>{{jb.jobDescription}}</td>
+          <td>{{jb.jobExperienceLevel}}</td>
+          <td>{{jb.jobSkillSet}}</td>
+          <td>{{jb.jobPayScale}}</td>
+          <td>{{jb.jobLocation}}</td>
+          <td>{{jb.startDate | date:'short'}}</td>
+          <td>{{jb.endDate | date:'short'}}</td>
+          <td>{{jb.companyId}}</td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

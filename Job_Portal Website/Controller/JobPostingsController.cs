@@ -1,0 +1,125 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Job_Portal_Website.Models;
+using AutoMapper;
+using Job_Portal_Website.DTO;
+
+namespace Job_Portal_Website.Controller
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class JobPostingsController : ControllerBase
+    {
+        private readonly Job_PortalContext _context;
+        private readonly IMapper _automapper;
+
+        public JobPostingsController(Job_PortalContext context, IMapper automapper)
+        {
+            _context = context;
+            _automapper = automapper;
+        }
+
+        // GET: api/JobPostings
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<JobPosting>>> GetJobPostings()
+        {
+          if (_context.JobPostings == null)
+          {
+              return NotFound();
+          }
+            return await _context.JobPostings.ToListAsync();
+        }
+
+        // GET: api/JobPostings/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<JobPosting>> GetJobPosting(int id)
+        {
+          if (_context.JobPostings == null)
+          {
+              return NotFound();
+          }
+            var jobPosting = await _context.JobPostings.FindAsync(id);
+
+            if (jobPosting == null)
+            {
+                return NotFound();
+            }
+
+            return jobPosting;
+        }
+
+        // PUT: api/JobPostings/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutJobPosting(int id, JobPostingDTO jobPosting)
+        {
+            var userProfile = await _context.ApplyforJobs.FindAsync(id);
+            try
+            {
+                if (userProfile == null)
+                {
+                    return NotFound();
+                }
+                _automapper.Map(jobPosting, userProfile);
+                _context.Entry(userProfile).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return Ok(jobPosting);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!JobPostingExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
+
+        // POST: api/JobPostings
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<JobPosting>> PostJobPosting(JobPostingDTO jobPosting)
+        {
+            var user = _automapper.Map<JobPosting>(jobPosting);
+            _context.JobPostings.Add(user);
+            await _context.SaveChangesAsync();
+            
+
+            return CreatedAtAction("GetJobPosting", new { id = user.Jobld }, user);
+        }
+
+        // DELETE: api/JobPostings/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteJobPosting(int id)
+        {
+            if (_context.JobPostings == null)
+            {
+                return NotFound();
+            }
+            var jobPosting = await _context.JobPostings.FindAsync(id);
+            if (jobPosting == null)
+            {
+                return NotFound();
+            }
+
+            _context.JobPostings.Remove(jobPosting);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool JobPostingExists(int id)
+        {
+            return (_context.JobPostings?.Any(e => e.Jobld == id)).GetValueOrDefault();
+        }
+    }
+}

@@ -1,0 +1,49 @@
+<br>
+<div class="card mx-auto " style="width: 650px;">    <div class="card-body">
+    <div class="card-header text-center fs-4 fw-bold">
+    Company SignUp
+    </div>  
+    <div class="card-body">
+        <form class="row g-3" [formGroup]="signUpForm">
+            <!-- <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">CompanyId</label>
+              <input type="number" formControlName="companyld"class="form-control" id="exampleInputPassword1">
+            </div> -->
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">CompanyName</label>
+              <input type="text" formControlName="companyName" class="form-control" id="exampleInputPassword1"required>
+              <div *ngIf="signUpForm.invalid && signUpForm.touched">Required</div> 
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">CompanyEmail</label>
+              <input type="text" formControlName="companyEmail" class="form-control" id="exampleInputPassword1"required>
+              <div *ngIf="signUpForm.invalid && signUpForm.touched">Required</div> 
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">CompanyPhone</label>
+              <input type="text" formControlName="companyPhone" class="form-control" id="exampleInputPassword1"required>
+              <div *ngIf="signUpForm.invalid && signUpForm.touched">Required</div> 
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">CompanyAddress</label>
+              <input type="text" formControlName="companyAddress" class="form-control" id="exampleInputPassword1"required>
+              <div *ngIf="signUpForm.invalid && signUpForm.touched">Required</div> 
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">CompanyDescription</label>
+              <input type="text" formControlName="companyDescription" class="form-control" id="exampleInputPassword1"required>
+              <div *ngIf="signUpForm.invalid && signUpForm.touched">Required</div> 
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="text" formControlName="password" class="form-control" id="exampleInputPassword1"required>
+              <div *ngIf="signUpForm.invalid && signUpForm.touched">Required</div> 
+            </div>
+          
+            <button type="button" class="btn btn-primary" [disabled]="signUpForm.invalid" (click)="signUp()">Submit</button>
+            <button type="button" class="btn btn-primary" id="cancel" (click)="onSubmit()">Cancel</button>
+
+          </form>
+      </div>
+      </div>
+    </div>

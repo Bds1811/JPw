@@ -1,0 +1,45 @@
+<br>
+<div class="card mx-auto " style="width: 650px;">    <div class="card-body">
+    <div class="card-header text-center fs-4 fw-bold">
+    Job Seeker Login
+    </div>  
+    <div class="card-body">
+        <form class="row g-3" [formGroup]="signUpForm">
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">JobSeekerName</label>
+              <input type="text" formControlName="jobSeekerName"class="form-control" id="exampleInputPassword1"required>
+              <div *ngIf="signUpForm.invalid && signUpForm.touched">Required</div> 
+            </div>
+         
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Gender</label>
+              <input type="text" formControlName="gender" class="form-control" id="exampleInputPassword1"required>
+              <div *ngIf="signUpForm.invalid && signUpForm.touched">Required</div> 
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Email</label>
+              <input type="text" formControlName="email" class="form-control" id="exampleInputPassword1"required>
+              <div *ngIf="signUpForm.invalid && signUpForm.touched">Required</div> 
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">MobileNumber</label>
+              <input type="text" formControlName="mobileNumber" class="form-control" id="exampleInputPassword1"required>
+              <div *ngIf="signUpForm.invalid && signUpForm.touched">Required</div> 
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Skills</label>
+              <input type="text" formControlName="skills" class="form-control" id="exampleInputPassword1"required>
+              <div *ngIf="signUpForm.invalid && signUpForm.touched">Required</div> 
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="text" formControlName="password" class="form-control" id="exampleInputPassword1"required>
+              <div *ngIf="signUpForm.invalid && signUpForm.touched">Required</div> 
+            </div>
+           
+            <button type="button" class="btn btn-primary" [disabled]="signUpForm.invalid" (click)="postJobSeeker()">Submit</button>
+            <button type="button" class="btn btn-primary" id="cancel" (click)="onSubmit()">Cancel</button>
+          </form>
+      </div>
+      </div>
+    </div>

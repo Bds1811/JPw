@@ -1,0 +1,40 @@
+
+
+<app-navbaradmin></app-navbaradmin>
+<nav class="navbar">
+  <input class="form-control" type="text" name="companyName" [(ngModel)]="companyName" (ngModelChange)="Search()"
+        placeholder="Enter Company Name to search">
+</nav>
+
+<div class="text-center">
+  <div class="card" >
+    <br>
+    <br>
+    <div class="card-header text-center fs-3">
+      Company Details List
+    </div>
+    <div class="card-body" >
+      <table class=" table table-success table-striped table-hover" >
+        <thead>
+          <tr>
+            <th scope="col">CompanyId</th>
+            <th scope="col">CompanyName</th>
+            <th scope="col">CompanyEmail</th>
+            <th scope="col">CompanyPhone</th>
+            <th scope="col">CompanyAddress</th>
+            <th scope="col">CompanyDescription</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let jb of companyData">
+          <td>{{jb.companyId}}</td>
+          <td>{{jb.companyName}}</td>
+          <td>{{jb.companyEmail}}</td>
+          <td>{{jb.companyPhone}}</td>
+          <td>{{jb.companyAddress}}</td>
+          <td>{{jb.companyDescription}}</td>
+          <!-- <button type="button" class="btn btn-danger" (click)="delete(jb.companyld)">Delete</button> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

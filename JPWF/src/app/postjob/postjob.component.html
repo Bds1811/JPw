@@ -1,0 +1,69 @@
+
+<app-navbarcompany></app-navbarcompany>
+<br>
+<br>
+<div class="card mx-auto " style="width: 650px;">    <div class="card-body">
+  <div class="card-header text-center fs-4 fw-bold">
+  PostJob
+  </div>
+  <div class="card-body">
+    <form class="row g-3" [formGroup]="formValue">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">JobId</label>
+        <input type="number" formControlName="jobId"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"required>
+      <div *ngIf="formValue.invalid && formValue.touched">Required</div> 
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">JobTitle</label>
+        <input type="text" formControlName="jobTitle"class="form-control" id="exampleInputPassword1"required>
+        <div *ngIf="formValue.invalid && formValue.touched">Required</div> 
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">JobDescription</label>
+        <input type="text" formControlName="jobDescription" class="form-control" id="exampleInputPassword1"required>
+        <div *ngIf="formValue.invalid && formValue.touched">Required</div> 
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">ExperienceLevel</label>
+        <input type="text" formControlName="jobExperienceLevel" class="form-control" id="exampleInputPassword1"required>
+        <div *ngIf="formValue.invalid && formValue.touched">Required</div> 
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">SkillSet</label>
+        <input type="text" formControlName="jobSkillSet" class="form-control" id="exampleInputPassword1"required>
+        <div *ngIf="formValue.invalid && formValue.touched">Required</div> 
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">PayScale</label>
+        <input type="text" formControlName="jobPayScale" class="form-control" id="exampleInputPassword1"required>
+        <div *ngIf="formValue.invalid && formValue.touched">Required</div> 
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Location</label>
+        <input type="text" formControlName="jobLocation" class="form-control" id="exampleInputPassword1"required>
+        <div *ngIf="formValue.invalid && formValue.touched">Required</div> 
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">StartDate</label>
+        <input type="date" formControlName="startDate" class="form-control" id="exampleInputPassword1"required>
+        <div *ngIf="formValue.invalid && formValue.touched">Required</div> 
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">EndDate</label>
+        <input type="date" formControlName="endDate" class="form-control" id="exampleInputPassword1"required>
+        <div *ngIf="formValue.invalid && formValue.touched">Required</div> 
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">CompanyId</label>
+        <input type="number" formControlName="companyId" class="form-control" id="exampleInputPassword1"required>
+        <div *ngIf="formValue.invalid && formValue.touched">Required</div> 
+      </div>
+      <!-- <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div> -->
+      <button type="button" class="btn btn-primary" [disabled]="formValue.invalid" (click)="postJob()">Submit</button>
+      <button type="button" class="btn btn-primary" id="cancel" (click)="onSubmit()">Cancel</button>
+    </form>
+  </div>
+</div>
